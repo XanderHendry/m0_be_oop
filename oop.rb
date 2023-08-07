@@ -97,33 +97,3 @@ class Hobbit
         end
     end
 end
-
-bilbo = Hobbit.new("Bilbo", "sneaky", 100)
-
-p bilbo
-p bilbo.age
-p bilbo.is_adult
-p bilbo.is_old
-
-bilbo.celebrate_birthday
-p bilbo
-p bilbo.age
-p bilbo.is_adult
-p bilbo.is_old
-
-frodo = Hobbit.new("Frodo", "selfless", 50)
-p frodo
-p frodo.age
-p frodo.has_ring
-
-sam = Hobbit.new("Samwise", "brave", 38)
-p sam
-p sam.age
-p sam.is_adult
-p sam.is_old
-
-eleanor = Hobbit.new("Eleanor", "silly")
-p eleanor
-p eleanor.age
-eleanor.celebrate_birthday
-p eleanor.age
