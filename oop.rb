@@ -39,7 +39,24 @@ end
 #  it should have a dynamic color attribute (string)
 #  it should have a is_hungry attribute that is true by default
 #  it should have a eat method. If the dragon eats 4 times, it is no longer hungry
+class Dragon
+    def initialize(name, rider, color)
+        @name = name
+        @rider = rider
+        @color = color
+        @is_hungry = true
+        @hunger = 0
+    end
 
+    def eat
+        @hunger = @hunger + 1
+        puts "#{@name} has eaten #{@hunger} times. They're still hungry!"
+        if @hunger == 4
+            @is_hungry = false
+            puts "#{@name} is full!"
+        end
+    end
+end
 
 #  Write a Hobbit class
 #  it should have a dynamic name attribute (string)
@@ -49,3 +66,64 @@ end
 #  it should have an is_adult attribute (boolean) that is false by default. once a Hobbit is 33, it should be an adult
 #  it should have an is_old attribute that defaults to false. once a Hobbit is 101, it is old.
 #  it should have a has_ring attribute. If the Hobbit's name is "Frodo", true, if not, false.
+class Hobbit
+    attr_reader :name, :age, :is_adult, :is_old, :has_ring
+    def initialize(name, disposition, age = 0)
+        @name = name
+        @disposition = disposition
+        @age = age.to_i
+        @is_adult = false
+        @is_old = false
+        @has_ring = false
+
+        if @age >= 33
+            @is_adult = true
+        end
+        if @age > 100
+            @is_old = true
+        end
+        if @name == "Frodo"
+            @has_ring = true
+        end
+    end
+
+
+    def celebrate_birthday
+        @age = @age + 1
+        if @age >= 101
+            @is_old = true
+        elsif @age >= 33
+            @is_adult = true
+        end
+    end
+end
+
+bilbo = Hobbit.new("Bilbo", "sneaky", 100)
+
+p bilbo
+p bilbo.age
+p bilbo.is_adult
+p bilbo.is_old
+
+bilbo.celebrate_birthday
+p bilbo
+p bilbo.age
+p bilbo.is_adult
+p bilbo.is_old
+
+frodo = Hobbit.new("Frodo", "selfless", 50)
+p frodo
+p frodo.age
+p frodo.has_ring
+
+sam = Hobbit.new("Samwise", "brave", 38)
+p sam
+p sam.age
+p sam.is_adult
+p sam.is_old
+
+eleanor = Hobbit.new("Eleanor", "silly")
+p eleanor
+p eleanor.age
+eleanor.celebrate_birthday
+p eleanor.age
